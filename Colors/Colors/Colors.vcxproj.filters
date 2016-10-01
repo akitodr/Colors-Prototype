@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\AbstractParticleManager.cpp">
+      <Filter>src\particles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DynamicManager.cpp">
+      <Filter>src\particles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Emitter.cpp">
+      <Filter>src\particles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LineShape.cpp">
+      <Filter>src\particles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LowMemoryManager.cpp">
+      <Filter>src\particles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NewtonPhysics.cpp">
+      <Filter>src\particles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OFRenderer.cpp">
+      <Filter>src\particles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RingShape.cpp">
+      <Filter>src\particles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ColoredBody.cpp">
+      <Filter>src\particles</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons">
+      <UniqueIdentifier>{c3c3cc59-cec0-4a56-a01f-e517f6804747}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\particles">
+      <UniqueIdentifier>{9f412146-6243-408d-bb85-c2599355c4b2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\AbstractParticleManager.h">
+      <Filter>src\particles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BodyCalculator.h">
+      <Filter>src\particles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DynamicManager.h">
+      <Filter>src\particles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Emitter.h">
+      <Filter>src\particles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EmitterShape.h">
+      <Filter>src\particles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LineShape.h">
+      <Filter>src\particles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LowMemoryManager.h">
+      <Filter>src\particles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NewtonPhysics.h">
+      <Filter>src\particles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OFRenderer.h">
+      <Filter>src\particles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Particle.h">
+      <Filter>src\particles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ParticleManager.h">
+      <Filter>src\particles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ParticleObserver.h">
+      <Filter>src\particles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ParticleRenderer.h">
+      <Filter>src\particles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PhysicsCalculator.h">
+      <Filter>src\particles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PointShape.h">
+      <Filter>src\particles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Range.h">
+      <Filter>src\particles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RingShape.h">
+      <Filter>src\particles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ColoredBody.h">
+      <Filter>src\particles</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+</Project>
