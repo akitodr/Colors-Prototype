@@ -29,11 +29,16 @@ void ofApp::setup() {
 //--------------------------------------------------------------
 void ofApp::update() {
 	player.update(ofGetLastFrameTime());
-	circle.collided(&player);
+
+	if (circle.collided(&player)) {
+		player.interpolateColor(0, 3);
+	}
+	
 }
 
 //--------------------------------------------------------------
 void ofApp::draw() {
+	ofSetColor(0, 255, 0);
 	background.draw(0, 0);
 	circle.draw();
 	player.draw();
@@ -42,7 +47,7 @@ void ofApp::draw() {
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key) {
 	if (key == GLFW_KEY_SPACE) {
-		player.interpolateColor(0, 50);
+		
 	}
 	else if (key == 'r')
 		player.interpolateColor(0, 50);
