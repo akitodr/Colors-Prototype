@@ -13,23 +13,31 @@ using namespace particle::manager;
 using namespace particle::shape;
 
 #include "Player.h"
+#include "Collectibles.h"
 
 Player player;
+Circle* circle;
 
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofSetBackgroundColor(0, 0, 0);
     player.setup();
+	circle = new Circle();
+	circle->init();
+	
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     player.update(ofGetLastFrameTime());
+	
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
     player.draw();
+	circle->draw();
+
 }
 
 //--------------------------------------------------------------

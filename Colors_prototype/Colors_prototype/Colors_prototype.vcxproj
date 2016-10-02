@@ -176,6 +176,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\AbstractParticleManager.cpp" />
+    <ClCompile Include="src\Collectibles.cpp" />
     <ClCompile Include="src\ColoredBody.cpp" />
     <ClCompile Include="src\DynamicManager.cpp" />
     <ClCompile Include="src\Emitter.cpp" />
@@ -191,6 +192,7 @@
   <ItemGroup>
     <ClInclude Include="src\AbstractParticleManager.h" />
     <ClInclude Include="src\BodyCalculator.h" />
+    <ClInclude Include="src\Collectibles.h" />
     <ClInclude Include="src\ColoredBody.h" />
     <ClInclude Include="src\DynamicManager.h" />
     <ClInclude Include="src\Emitter.h" />

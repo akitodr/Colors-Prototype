@@ -54,7 +54,7 @@ void Player::setPosition(ofVec2f position) {
 }
 
 void Player::setColor(int r, int g, int b) {
-    body->setColor(r, g, b);
+    body->setColor(r, g, b, 3.0f);
 }
 
 Player::~Player()
