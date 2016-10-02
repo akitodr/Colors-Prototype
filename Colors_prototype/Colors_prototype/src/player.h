@@ -1,11 +1,3 @@
-//
-//  player.h
-//  colors
-//
-//  Created by ViniGodoy on 30/09/16.
-//
-//
-
 #pragma once
 #include "ofMain.h"
 
@@ -19,17 +11,19 @@ using namespace particle::physics;
 using namespace particle::body;
 
 class Player {
-    private:
-        Emitter* emitter;
-        ColoredBody* body;
-        NewtonPhysics* physics;
-    
-    public:
-        void setup();
-        void update(float time);
-        void draw();
-        void setColor(int r, int g, int b);
-        ofVec2f getPosition();
-        void setPosition(ofVec2f position);
-        ~Player();
+private:
+	Emitter* emitter;
+	ColoredBody* body;
+	NewtonPhysics* physics;
+
+public:
+	int size = 20;
+	void setup();
+	void update(float time);
+	void draw();
+	void setColor(int r, int g, int b);
+	void interpolateColor(int RGBMode, int value);
+	ofVec2f getPosition();
+	void setPosition(ofVec2f position);
+	~Player();
 };

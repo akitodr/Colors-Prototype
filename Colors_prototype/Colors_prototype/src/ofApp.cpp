@@ -16,84 +16,88 @@ using namespace particle::shape;
 #include "Collectibles.h"
 
 Player player;
-Circle* circle;
+Circle circle;
 
 //--------------------------------------------------------------
-void ofApp::setup(){
-    ofSetBackgroundColor(0, 0, 0);
-    player.setup();
-	circle = new Circle();
-	circle->init();
-	
-}
-
-//--------------------------------------------------------------
-void ofApp::update(){
-    player.update(ofGetLastFrameTime());
-	
-}
-
-//--------------------------------------------------------------
-void ofApp::draw(){
-    player.draw();
-	circle->draw();
+void ofApp::setup() {
+	background.load("img/cenario_cinza_1.jpg");
+	player.setup();
+	circle.init();
 
 }
 
 //--------------------------------------------------------------
-void ofApp::keyPressed(int key){
-    if (key == GLFW_KEY_SPACE) {
-        player.setColor(0, 255, 80);
-    } else if (key == 'x')
-        player.setColor(255, 0, 80);
+void ofApp::update() {
+	player.update(ofGetLastFrameTime());
+	circle.collided(&player);
 }
 
 //--------------------------------------------------------------
-void ofApp::keyReleased(int key){
-
+void ofApp::draw() {
+	background.draw(0, 0);
+	circle.draw();
+	player.draw();
 }
 
 //--------------------------------------------------------------
-void ofApp::mouseMoved(int x, int y ){
-    player.setPosition(ofVec2f(x, y));
+void ofApp::keyPressed(int key) {
+	if (key == GLFW_KEY_SPACE) {
+		player.interpolateColor(0, 50);
+	}
+	else if (key == 'r')
+		player.interpolateColor(0, 50);
+	else if (key == 'g')
+		player.interpolateColor(1, 50);
+	else if (key == 'b')
+		player.interpolateColor(2, 50);
 }
 
 //--------------------------------------------------------------
-void ofApp::mouseDragged(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mousePressed(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseReleased(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseEntered(int x, int y){
+void ofApp::keyReleased(int key) {
 
 }
 
 //--------------------------------------------------------------
-void ofApp::mouseExited(int x, int y){
+void ofApp::mouseMoved(int x, int y) {
+	player.setPosition(ofVec2f(x, y));
+}
+
+//--------------------------------------------------------------
+void ofApp::mouseDragged(int x, int y, int button) {
 
 }
 
 //--------------------------------------------------------------
-void ofApp::windowResized(int w, int h){
+void ofApp::mousePressed(int x, int y, int button) {
 
 }
 
 //--------------------------------------------------------------
-void ofApp::gotMessage(ofMessage msg){
+void ofApp::mouseReleased(int x, int y, int button) {
 
 }
 
 //--------------------------------------------------------------
-void ofApp::dragEvent(ofDragInfo dragInfo){ 
+void ofApp::mouseEntered(int x, int y) {
+
+}
+
+//--------------------------------------------------------------
+void ofApp::mouseExited(int x, int y) {
+
+}
+
+//--------------------------------------------------------------
+void ofApp::windowResized(int w, int h) {
+
+}
+
+//--------------------------------------------------------------
+void ofApp::gotMessage(ofMessage msg) {
+
+}
+
+//--------------------------------------------------------------
+void ofApp::dragEvent(ofDragInfo dragInfo) {
 
 }

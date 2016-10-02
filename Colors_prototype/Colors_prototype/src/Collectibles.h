@@ -2,12 +2,10 @@
 #include "ofApp.h"
 #include "player.h"
 
-#define COLLIDED true
-#define NOTCOLLIDED false
-
 class Circle {
 private:
 	ofVec2f position;
+	int size = 10;
 public:
 	void init();
 	void update(float time);

@@ -6,15 +6,18 @@ void Circle::init() {
 	position.y = 500;
 }
 void Circle::update(float time) {
-	
+
 }
 
 bool Circle::collided(Player* player) {
 	ofVec2f playerPosition = player->getPosition();
-	if (playerPosition == position) {
+	if ((playerPosition.x + player->size) >= position.x && playerPosition.x <= (position.x + size)
+		&& playerPosition.y <= (position.y + size) && (playerPosition.y + player->size) >= position.y) {
+		cout << "collided!" << endl;
 		return true;
 	}
 	else {
+		cout << "---" << endl;
 		return false;
 	}
 }
