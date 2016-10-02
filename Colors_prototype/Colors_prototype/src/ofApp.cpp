@@ -23,7 +23,6 @@ void ofApp::setup() {
 	background.load("img/cenario_cinza_1.jpg");
 	player.setup();
 	circle.init();
-
 }
 
 //--------------------------------------------------------------
@@ -35,7 +34,14 @@ void ofApp::update() {
 //--------------------------------------------------------------
 void ofApp::draw() {
 	background.draw(0, 0);
-	circle.draw();
+	if (circle.active) { //se o circulo estiver ativo
+		if (!circle.collided(&player)) { // e não estiver colidindo
+			circle.draw(); //desenha
+		}
+		else { //se estiver colidindo seta false
+			circle.active = false;
+		}
+	}
 	player.draw();
 }
 

@@ -2,8 +2,9 @@
 
 
 void Circle::init() {
-	position.x = 500;
-	position.y = 500;
+	active = true;
+	position.x = rand() % 1000;
+	position.y = rand() % 760;
 }
 void Circle::update(float time) {
 
@@ -23,6 +24,9 @@ bool Circle::collided(Player* player) {
 }
 
 void Circle::draw() {
-	ofSetColor(ofColor::red);
-	ofDrawCircle(position.x, position.y, 10);
+		ofSetColor(ofColor::red);
+		ofDrawCircle(position.x, position.y, 10);
+}
+Circle::~Circle() {
+	
 }

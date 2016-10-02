@@ -1,3 +1,11 @@
+//
+//  player.h
+//  colors
+//
+//  Created by ViniGodoy on 30/09/16.
+//
+//
+
 #pragma once
 #include "ofMain.h"
 
