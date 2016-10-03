@@ -21,6 +21,7 @@ void Player::setup() {
 
 	ParticleRenderer* renderer = new OFRenderer("img/ember.png", 1.5, true);
 
+
 	emitter = new Emitter(ofVec2f(50, ofGetHeight() / 2),
 		20, //Creations per second
 		Range<float>(1.0f, 5.0f), //LifeTime

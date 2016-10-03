@@ -188,6 +188,7 @@
     <ClCompile Include="src\OFRenderer.cpp" />
     <ClCompile Include="src\player.cpp" />
     <ClCompile Include="src\RingShape.cpp" />
+    <ClCompile Include="src\Scroll.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\AbstractParticleManager.h" />
@@ -211,6 +212,7 @@
     <ClInclude Include="src\PointShape.h" />
     <ClInclude Include="src\Range.h" />
     <ClInclude Include="src\RingShape.h" />
+    <ClInclude Include="src\Scroll.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
