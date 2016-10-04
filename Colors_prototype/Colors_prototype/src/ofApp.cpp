@@ -13,41 +13,70 @@ using namespace particle::manager;
 using namespace particle::shape;
 
 #include "Player.h"
+#include "Menu.h"
 #include "Collectibles.h"
 
+
 Player player;
-Circle circle;
+Menu menu;
+vector<Circle*> objects;
+
+//fazendo mta gambiarra pra implementar o menu
 
 //--------------------------------------------------------------
 void ofApp::setup() {
+
+	menu.init();
+
 	background.load("img/cenario_cinza_1.jpg");
 	player.setup();
-	circle.init();
+
+	objects.push_back(new Circle());
+	objects.push_back(new Circle());
+	objects.push_back(new Circle());
+
+	for (int i = 0; i < objects.size(); i++) {
+		if(objects[i] != nullptr)
+		objects[i]->init();
+	}
 }
 
 //--------------------------------------------------------------
 void ofApp::update() {
 	player.update(ofGetLastFrameTime());
 
-	if (circle.collided(&player)) {
-		player.interpolateColor(0, 3);
+	for (int i = 0; i < objects.size(); i++) {
+		if (objects[i]->collided(&player)) {
+			player.interpolateColor(2, 3);
+		}
 	}
-	
+
 }
 
 //--------------------------------------------------------------
 void ofApp::draw() {
-	ofSetColor(0, 255, 0);
-	background.draw(0, 0);
-	if (circle.active) { //se o circulo estiver ativo
-		if (!circle.collided(&player)) { // e não estiver colidindo
-			circle.draw(); //desenha
+	ofSetColor(255, 255, 255);
+
+	do
+	{
+		menu.draw();
+	} while (!menu.click);
+
+	if (menu.click) {
+		background.draw(0, 0);
+
+		for (int i = 0; i < objects.size(); i++) {
+			if (objects[i]) { //se o circulo estiver ativo
+				if (!objects[i]->collided(&player) && objects[i] != nullptr) { // e não estiver colidindo
+					objects[i]->draw(); //desenha
+				}
+				else { //se estiver colidindo seta false
+					objects[i] = nullptr;
+				}
+			}
 		}
-		else { //se estiver colidindo seta false
-			circle.active = false;
-		}
+		player.draw();
 	}
-	player.draw();
 }
 
 //--------------------------------------------------------------

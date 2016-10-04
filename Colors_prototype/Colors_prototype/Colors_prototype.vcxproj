@@ -183,6 +183,7 @@
     <ClCompile Include="src\LineShape.cpp" />
     <ClCompile Include="src\LowMemoryManager.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Menu.cpp" />
     <ClCompile Include="src\NewtonPhysics.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\OFRenderer.cpp" />
@@ -200,6 +201,7 @@
     <ClInclude Include="src\EmitterShape.h" />
     <ClInclude Include="src\LineShape.h" />
     <ClInclude Include="src\LowMemoryManager.h" />
+    <ClInclude Include="src\Menu.h" />
     <ClInclude Include="src\NewtonPhysics.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\OFRenderer.h" />

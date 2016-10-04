@@ -1,6 +1,5 @@
 #include "Collectibles.h"
 
-
 void Circle::init() {
 	active = true;
 	position.x = rand() % 1000;
@@ -24,7 +23,7 @@ bool Circle::collided(Player* player) {
 }
 
 void Circle::draw() {
-		ofSetColor(ofColor::red);
+		ofSetColor(ofColor::blue);
 		ofDrawCircle(position.x, position.y, 10);
 }
 Circle::~Circle() {
