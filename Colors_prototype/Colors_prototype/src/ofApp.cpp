@@ -18,7 +18,7 @@ using namespace particle::shape;
 
 
 Player player;
-Menu menu;
+//Menu menu;
 vector<Circle*> objects;
 
 //fazendo mta gambiarra pra implementar o menu
@@ -26,14 +26,14 @@ vector<Circle*> objects;
 //--------------------------------------------------------------
 void ofApp::setup() {
 
-	menu.init();
+	//menu.init();
 
 	background.load("img/cenario_cinza_1.jpg");
 	player.setup();
 
-	objects.push_back(new Circle());
-	objects.push_back(new Circle());
-	objects.push_back(new Circle());
+    for (int i = 0; i < 20; i++){
+        objects.push_back(new Circle());
+    }
 
 	for (int i = 0; i < objects.size(); i++) {
 		if(objects[i] != nullptr)
@@ -46,37 +46,32 @@ void ofApp::update() {
 	player.update(ofGetLastFrameTime());
 
 	for (int i = 0; i < objects.size(); i++) {
-		if (objects[i]->collided(&player)) {
-			player.interpolateColor(2, 3);
+		if (objects[i] && objects[i]->collided(&player)) {
+			player.interpolateColor(objects[i]->color, 50);
+            objects[i] = nullptr;
 		}
 	}
-
 }
 
 //--------------------------------------------------------------
 void ofApp::draw() {
 	ofSetColor(255, 255, 255);
 
-	do
-	{
-		menu.draw();
-	} while (!menu.click);
+	//do
+	//{
+	//	menu.draw();
+	//} while (!menu.click);
 
-	if (menu.click) {
+	//if (menu.click) {
 		background.draw(0, 0);
 
 		for (int i = 0; i < objects.size(); i++) {
 			if (objects[i]) { //se o circulo estiver ativo
-				if (!objects[i]->collided(&player) && objects[i] != nullptr) { // e não estiver colidindo
 					objects[i]->draw(); //desenha
-				}
-				else { //se estiver colidindo seta false
-					objects[i] = nullptr;
-				}
 			}
 		}
 		player.draw();
-	}
+	//}
 }
 
 //--------------------------------------------------------------

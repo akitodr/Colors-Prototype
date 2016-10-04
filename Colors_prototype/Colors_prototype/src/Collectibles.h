@@ -7,7 +7,8 @@ class Circle {
 private:
 	int size = 10;
 public:
-	ofVec2f position; //mudei pra public mas não curto
+    int color;
+	ofVec2f position; //mudei pra public mas não curt
 	bool active;
 	void init();
 	void update(float time);
