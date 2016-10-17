@@ -13,6 +13,6 @@ public:
 	void init();
 	void update(float time);
 	bool collided(Player* player);
-	void draw();
+	void draw(ofVec2f posCamera);
 	~Circle();
 };
