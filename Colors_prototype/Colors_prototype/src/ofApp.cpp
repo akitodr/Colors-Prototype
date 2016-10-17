@@ -52,11 +52,11 @@ void ofApp::update() {
 	posCamera = player.getPosition();
 	posCamera -= SCREEN_CENTER;
 	//na real aqui não to sabendo o que setar direito
-	if (posCamera.x <= SCREEN_CENTER.x) {
-		posCamera.x = SCREEN_CENTER.x;
+	if (posCamera.x <= 0) {
+		posCamera.x = 0;
 	}
-	else if (posCamera.x >= background.getWidth()) {
-		posCamera.x = background.getWidth();
+	else if (posCamera.x >= background.getWidth() - SCREEN_CENTER.x) {
+		posCamera.x = background.getWidth() - SCREEN_CENTER.x;
 	}
 
 	//interpolação de cor do objeto
