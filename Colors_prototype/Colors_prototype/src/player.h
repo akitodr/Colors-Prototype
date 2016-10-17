@@ -4,6 +4,7 @@
 #include "Emitter.h"
 #include "NewtonPhysics.h"
 #include "ColoredBody.h"
+#include "OFRenderer.h"
 
 using namespace math;
 using namespace particle;
@@ -15,7 +16,10 @@ private:
 	Emitter* emitter;
 	ColoredBody* body;
 	NewtonPhysics* physics;
-	ofVec2f position;
+    OFRenderer* renderer;
+    
+    ofVec2f position;
+    ofVec2f direction;
 
 public:
 	int size = 20;
@@ -24,7 +28,11 @@ public:
 	void draw(ofVec2f camera);
 	void setColor(int r, int g, int b);
 	void interpolateColor(int RGBMode, int value);
+    
 	ofVec2f getPosition();
-	void setPosition(ofVec2f pos);
+	void setPosition(ofVec2f position);
+    
+    ofVec2f getDirection();
+    void setDirection(ofVec2f direction);
 	~Player();
 };

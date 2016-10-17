@@ -175,11 +175,24 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
+      <Project>{5837595d-aca9-485c-8e76-729040ce4b0b}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>$(OF_ROOT)\libs\openFrameworksCompiled\project\vs</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="src\AbstractParticleManager.cpp" />
     <ClCompile Include="src\Collectibles.cpp" />
     <ClCompile Include="src\ColoredBody.cpp" />
     <ClCompile Include="src\DynamicManager.cpp" />
     <ClCompile Include="src\Emitter.cpp" />
+    <ClCompile Include="src\Fireworks.cpp" />
     <ClCompile Include="src\LineShape.cpp" />
     <ClCompile Include="src\LowMemoryManager.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -199,6 +212,8 @@
     <ClInclude Include="src\DynamicManager.h" />
     <ClInclude Include="src\Emitter.h" />
     <ClInclude Include="src\EmitterShape.h" />
+    <ClInclude Include="src\Fireworks.h" />
+    <ClInclude Include="src\GameSteps.h" />
     <ClInclude Include="src\LineShape.h" />
     <ClInclude Include="src\LowMemoryManager.h" />
     <ClInclude Include="src\Menu.h" />
@@ -215,18 +230,6 @@
     <ClInclude Include="src\Range.h" />
     <ClInclude Include="src\RingShape.h" />
     <ClInclude Include="src\Scroll.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
-      <Project>{5837595d-aca9-485c-8e76-729040ce4b0b}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="icon.rc">
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>$(OF_ROOT)\libs\openFrameworksCompiled\project\vs</AdditionalIncludeDirectories>
-    </ResourceCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ProjectExtensions>

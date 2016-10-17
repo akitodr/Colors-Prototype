@@ -19,7 +19,7 @@ void Player::setup() {
 	body = new ColoredBody(0, 255, 0, //Color
 		Range<int>(255)); //Alpha variation
 
-	ParticleRenderer* renderer = new OFRenderer("img/ember.png", 1.5, true);
+	renderer = new OFRenderer("img/ember.png", 1.5, true);
 
 
 	emitter = new Emitter(ofVec2f(50, ofGetHeight() / 2),
@@ -31,11 +31,14 @@ void Player::setup() {
 }
 
 void Player::update(float time) {
+    position += direction * 30 * time;
 	emitter->process(time);
+
 }
 
 void Player::draw(ofVec2f camera) {
-	emitter->setPosition(position - camera);
+    renderer->setCamera(camera);
+    emitter->setPosition(position);
 	emitter->draw();
 }
 
@@ -43,8 +46,20 @@ ofVec2f Player::getPosition() {
 	return position;
 }
 
-void Player::setPosition(ofVec2f pos) {
-	position = pos;;
+void Player::setPosition(ofVec2f position) {
+    this->position = position;
+}
+
+void Player::setDirection(ofVec2f direction) {
+    if (direction.length() > 15) {
+        direction.normalize() *= 15;
+    }
+
+    this->direction = direction;
+}
+
+ofVec2f Player::getDirection() {
+    return direction;
 }
 
 void Player::setColor(int r, int g, int b) {

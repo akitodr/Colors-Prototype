@@ -30,10 +30,12 @@ private:
 	ofImage sprite;
 	float scale;
 	bool aditive;
+    ofVec2f camera;
 
 public:
 
 	OFRenderer(const char* name, float _scale = 1, bool _aditive = false);
+    void setCamera(const ofVec2f& cameraPos);
 	virtual void draw(const particle::Particle& particle) const;
 	virtual ~OFRenderer();
 	void setScale(float _scale);

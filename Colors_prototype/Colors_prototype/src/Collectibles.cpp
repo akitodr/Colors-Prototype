@@ -28,7 +28,7 @@ void Circle::draw(ofVec2f posCamera) {
 		ofSetColor(ofColor::blue);
 		break;
 	}
-	ofDrawCircle(position - posCamera, 10);
+	ofDrawCircle(position.x - posCamera.x, position.y - posCamera.y, 10);
 }
 Circle::~Circle() {
 

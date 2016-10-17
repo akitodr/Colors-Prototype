@@ -30,13 +30,17 @@ OFRenderer::OFRenderer(const char* name, float _scale, bool _aditive)
 	sprite.setAnchorPercent(0.5, 0.5);
 }
 
+void OFRenderer::setCamera(const ofVec2f& cameraPos) {
+    camera = cameraPos;
+}
+
 void OFRenderer::draw(const particle::Particle& particle) const
 {
 
 	ofEnableBlendMode(aditive ? OF_BLENDMODE_ADD : OF_BLENDMODE_ALPHA);
 
 	ofPushMatrix();
-	ofTranslate(particle.physics.position);
+	ofTranslate(particle.physics.position - camera);
 	ofScale(scale, scale);
 	ofRotateZ(particle.physics.angle);
 	ofSetColor(particle.body.r, particle.body.g, particle.body.b, particle.body.a);

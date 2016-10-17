@@ -22,6 +22,10 @@ Player player;
 vector<Circle*> objects;
 ofVec2f posCamera;
 
+ofVec2f mousePressedPos;
+ofVec2f mousePos;
+bool mouseDown = false;
+
 //fazendo mta gambiarra pra implementar o menu
 
 //--------------------------------------------------------------
@@ -40,22 +44,20 @@ void ofApp::setup() {
 		if (objects[i] != nullptr)
 			objects[i]->init();
 	}
+    player.setPosition(ofVec2f(background.getWidth() / 2, background.getHeight() / 2));
 }
 
 //--------------------------------------------------------------
 void ofApp::update() {
-	player.update(ofGetLastFrameTime());
-
 	//movimentação de tela
 	ofVec2f SCREEN_CENTER(ofGetWidth() / 2, ofGetHeight() / 2);
-
-	posCamera = player.getPosition();
-	posCamera -= SCREEN_CENTER;
+	posCamera = player.getPosition() - SCREEN_CENTER;
+    
+    player.update(ofGetLastFrameTime());
 	//na real aqui não to sabendo o que setar direito
-	if (posCamera.x <= SCREEN_CENTER.x) {
-		posCamera.x = SCREEN_CENTER.x;
-	}
-	else if (posCamera.x >= background.getWidth() - SCREEN_CENTER.x) {
+	if (posCamera.x <= 0) {
+		posCamera.x = 0;
+	} else if (posCamera.x >= background.getWidth() - SCREEN_CENTER.x) {
 		posCamera.x = background.getWidth() - SCREEN_CENTER.x;
 	}
 
@@ -66,6 +68,14 @@ void ofApp::update() {
 			objects[i] = nullptr;
 		}
 	}
+    
+    if (mouseDown) {
+        player.setDirection(mousePos - mousePressedPos);
+    } else {
+        player.setDirection(ofVec2f());
+    }
+    
+    
 }
 
 //--------------------------------------------------------------
@@ -73,7 +83,7 @@ void ofApp::draw() {
 	ofSetColor(255, 255, 255);
 
 	//if (menu.click) {
-	background.draw(0 - posCamera.x, 0);
+	background.draw(-posCamera);
 
 	for (int i = 0; i < objects.size(); i++) {
 		if (objects[i]) { //se o circulo estiver ativo
@@ -104,22 +114,24 @@ void ofApp::keyReleased(int key) {
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y) {
-	player.setPosition(ofVec2f(x, y));
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button) {
-
+    mousePos.set(x, y);
 }
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button) {
-
+    mousePressedPos.set(x, y);
+    mousePos.set(x,y);
+    mouseDown = true;
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button) {
-
+    mouseDown = false;
 }
 
 //--------------------------------------------------------------
