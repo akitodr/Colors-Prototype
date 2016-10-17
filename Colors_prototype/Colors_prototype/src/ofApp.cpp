@@ -52,8 +52,8 @@ void ofApp::update() {
 	posCamera = player.getPosition();
 	posCamera -= SCREEN_CENTER;
 	//na real aqui não to sabendo o que setar direito
-	if (posCamera.x <= 0) {
-		posCamera.x = 0;
+	if (posCamera.x <= SCREEN_CENTER.x) {
+		posCamera.x = SCREEN_CENTER.x;
 	}
 	else if (posCamera.x >= background.getWidth() - SCREEN_CENTER.x) {
 		posCamera.x = background.getWidth() - SCREEN_CENTER.x;
@@ -73,14 +73,14 @@ void ofApp::draw() {
 	ofSetColor(255, 255, 255);
 
 	//if (menu.click) {
-	background.draw(0 - posCamera.x, 0 - posCamera.y);
+	background.draw(0 - posCamera.x, 0);
 
 	for (int i = 0; i < objects.size(); i++) {
 		if (objects[i]) { //se o circulo estiver ativo
 			objects[i]->draw(posCamera); //desenha
 		}
 	}
-	player.draw();
+	player.draw(posCamera);
 	//}
 }
 
@@ -104,7 +104,7 @@ void ofApp::keyReleased(int key) {
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y) {
-	player.setPosition(ofVec2f(x, y) - posCamera);
+	player.setPosition(ofVec2f(x, y));
 }
 
 //--------------------------------------------------------------

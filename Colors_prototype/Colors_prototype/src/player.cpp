@@ -32,19 +32,19 @@ void Player::setup() {
 
 void Player::update(float time) {
 	emitter->process(time);
-
 }
 
-void Player::draw() {
+void Player::draw(ofVec2f camera) {
+	emitter->setPosition(position - camera);
 	emitter->draw();
 }
 
 ofVec2f Player::getPosition() {
-	return emitter->getPosition();
+	return position;
 }
 
-void Player::setPosition(ofVec2f position) {
-	emitter->setPosition(position);
+void Player::setPosition(ofVec2f pos) {
+	position = pos;;
 }
 
 void Player::setColor(int r, int g, int b) {

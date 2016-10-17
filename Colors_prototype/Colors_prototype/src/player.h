@@ -15,15 +15,16 @@ private:
 	Emitter* emitter;
 	ColoredBody* body;
 	NewtonPhysics* physics;
+	ofVec2f position;
 
 public:
 	int size = 20;
 	void setup();
 	void update(float time);
-	void draw();
+	void draw(ofVec2f camera);
 	void setColor(int r, int g, int b);
 	void interpolateColor(int RGBMode, int value);
 	ofVec2f getPosition();
-	void setPosition(ofVec2f position);
+	void setPosition(ofVec2f pos);
 	~Player();
 };
