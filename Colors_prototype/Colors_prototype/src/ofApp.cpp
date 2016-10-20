@@ -15,12 +15,13 @@ using namespace particle::shape;
 #include "Player.h"
 #include "Menu.h"
 #include "Collectibles.h"
+#include "Camera.h"
 
 
 Player player;
+Camera camera;
 //Menu menu;
 vector<Circle*> objects;
-ofVec2f posCamera;
 
 ofVec2f mousePressedPos;
 ofVec2f mousePos;
@@ -32,8 +33,8 @@ bool mouseDown = false;
 void ofApp::setup() {
 
 	//menu.init();
-
-	background.load("img/cenario_cinza_1.jpg");
+	background.load("img/cenario_cinza_2.jpg");
+	camera.Init(ofVec2f(background.getWidth(), background.getHeight()));
 	player.setup();
 
 	for (int i = 0; i < 20; i++) {
@@ -44,22 +45,15 @@ void ofApp::setup() {
 		if (objects[i] != nullptr)
 			objects[i]->init();
 	}
-    player.setPosition(ofVec2f(background.getWidth() / 2, background.getHeight() / 2));
+	player.setPosition(ofVec2f(background.getWidth() / 2, background.getHeight() / 2));
+
 }
 
 //--------------------------------------------------------------
 void ofApp::update() {
-	//movimentação de tela
-	ofVec2f SCREEN_CENTER(ofGetWidth() / 2, ofGetHeight() / 2);
-	posCamera = player.getPosition() - SCREEN_CENTER;
-    
-    player.update(ofGetLastFrameTime());
-	//na real aqui não to sabendo o que setar direito
-	if (posCamera.x <= 0) {
-		posCamera.x = 0;
-	} else if (posCamera.x >= background.getWidth() - SCREEN_CENTER.x) {
-		posCamera.x = background.getWidth() - SCREEN_CENTER.x;
-	}
+
+	camera.Update(player.getPosition());
+	player.update(ofGetLastFrameTime());
 
 	//interpolação de cor do objeto
 	for (int i = 0; i < objects.size(); i++) {
@@ -68,29 +62,30 @@ void ofApp::update() {
 			objects[i] = nullptr;
 		}
 	}
-    
-    if (mouseDown) {
-        player.setDirection(mousePos - mousePressedPos);
-    } else {
-        player.setDirection(ofVec2f());
-    }
-    
-    
+
+	//movimentando o player com o mouse clicado
+	if (mouseDown) {
+		player.setDirection(mousePos - mousePressedPos);
+	}
+	else {
+		player.setDirection(ofVec2f());
+	}
+
+
 }
 
 //--------------------------------------------------------------
 void ofApp::draw() {
-	ofSetColor(255, 255, 255);
+	ofSetColor(215, 155, 155);
+	background.draw(-camera.getPosition());
 
-	//if (menu.click) {
-	background.draw(-posCamera);
 
 	for (int i = 0; i < objects.size(); i++) {
 		if (objects[i]) { //se o circulo estiver ativo
-			objects[i]->draw(posCamera); //desenha
+			objects[i]->draw(camera.getPosition()); //desenha
 		}
 	}
-	player.draw(posCamera);
+	player.draw(camera.getPosition());
 	//}
 }
 
@@ -114,24 +109,24 @@ void ofApp::keyReleased(int key) {
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y) {
-    
+
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button) {
-    mousePos.set(x, y);
+	mousePos.set(x, y);
 }
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button) {
-    mousePressedPos.set(x, y);
-    mousePos.set(x,y);
-    mouseDown = true;
+	mousePressedPos.set(x, y);
+	mousePos.set(x, y);
+	mouseDown = true;
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button) {
-    mouseDown = false;
+	mouseDown = false;
 }
 
 //--------------------------------------------------------------
