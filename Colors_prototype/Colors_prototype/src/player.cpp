@@ -4,10 +4,25 @@
 #include "DynamicManager.h"
 #include "OFRenderer.h"
 
+
 using namespace particle::manager;
 using namespace particle::shape;
 
 void Player::setup() {
+    
+    animation.images = new ofImage[3];
+    animation.images[0].load("img/a1.png");
+    animation.images[0].setAnchorPercent(0.5, 0.5);
+    animation.images[1].load("img/a2.png");
+    animation.images[1].setAnchorPercent(0.5, 0.5);
+    animation.images[2].load("img/a3.png");
+    animation.images[2].setAnchorPercent(0.5, 0.5);
+    animation.frame = 0;
+    animation.count = 3;
+    animation.repeat = true;
+    animation.frameTime = 0.5;
+    animation.time = 0;
+    
 	physics = new NewtonPhysics(
 		Range<float>(1), //Mass
 		Range<int>(-10, 10),  //Force
@@ -33,13 +48,14 @@ void Player::setup() {
 void Player::update(float time) {
     position += direction * 30 * time;
 	emitter->process(time);
-
+    animation.update(time);
 }
 
 void Player::draw(ofVec2f camera) {
     renderer->setCamera(camera);
     emitter->setPosition(position);
 	emitter->draw();
+    animation.draw(position - camera);
 }
 
 ofVec2f Player::getPosition() {

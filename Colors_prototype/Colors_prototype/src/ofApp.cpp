@@ -16,10 +16,12 @@ using namespace particle::shape;
 #include "Menu.h"
 #include "Collectibles.h"
 #include "Camera.h"
+#include "Flower.hpp"
 
 
 Player player;
 Camera camera;
+Flower flower;
 //Menu menu;
 vector<Circle*> objects;
 
@@ -36,6 +38,7 @@ void ofApp::setup() {
 	background.load("img/cenario_cinza_2.jpg");
 	camera.Init(ofVec2f(background.getWidth(), background.getHeight()));
 	player.setup();
+    flower.init();
 
 	for (int i = 0; i < 20; i++) {
 		objects.push_back(new Circle());
@@ -46,14 +49,18 @@ void ofApp::setup() {
 			objects[i]->init();
 	}
 	player.setPosition(ofVec2f(background.getWidth() / 2, background.getHeight() / 2));
+    
+    
 
 }
 
 //--------------------------------------------------------------
 void ofApp::update() {
+    float secs = ofGetLastFrameTime();
 
 	camera.Update(player.getPosition());
-	player.update(ofGetLastFrameTime());
+	player.update(secs);
+    flower.update(player.getPosition(),secs);
 
 	//interpolação de cor do objeto
 	for (int i = 0; i < objects.size(); i++) {
@@ -78,6 +85,7 @@ void ofApp::update() {
 void ofApp::draw() {
 	ofSetColor(215, 155, 155);
 	background.draw(-camera.getPosition());
+    flower.draw(camera.getPosition());
 
 
 	for (int i = 0; i < objects.size(); i++) {

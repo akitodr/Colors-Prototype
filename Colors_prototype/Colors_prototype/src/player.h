@@ -5,6 +5,7 @@
 #include "NewtonPhysics.h"
 #include "ColoredBody.h"
 #include "OFRenderer.h"
+#include "Animation.h"
 
 using namespace math;
 using namespace particle;
@@ -17,6 +18,8 @@ private:
 	ColoredBody* body;
 	NewtonPhysics* physics;
     OFRenderer* renderer;
+    
+    Animation animation;
     
     ofVec2f position;
     ofVec2f direction;
