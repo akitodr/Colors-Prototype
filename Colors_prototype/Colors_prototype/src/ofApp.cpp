@@ -4,6 +4,7 @@
 #include "DynamicManager.h"
 #include "NewtonPhysics.h"
 #include "OFRenderer.h"
+#include "Screen.h"
 
 using namespace math;
 using namespace particle;
@@ -12,18 +13,7 @@ using namespace particle::body;
 using namespace particle::manager;
 using namespace particle::shape;
 
-#include "Player.h"
-#include "Menu.h"
-#include "Collectibles.h"
-#include "Camera.h"
-#include "Flower.hpp"
 
-
-Player player;
-Camera camera;
-Flower flower;
-//Menu menu;
-vector<Circle*> objects;
 
 ofVec2f mousePressedPos;
 ofVec2f mousePos;
@@ -34,23 +24,7 @@ bool mouseDown = false;
 //--------------------------------------------------------------
 void ofApp::setup() {
 
-	//menu.init();
-	background.load("img/cenario_cinza_2.jpg");
-	camera.Init(ofVec2f(background.getWidth(), background.getHeight()));
-	player.setup();
-    flower.init();
-
-	for (int i = 0; i < 20; i++) {
-		objects.push_back(new Circle());
-	}
-
-	for (int i = 0; i < objects.size(); i++) {
-		if (objects[i] != nullptr)
-			objects[i]->init();
-	}
-	player.setPosition(ofVec2f(background.getWidth() / 2, background.getHeight() / 2));
-    
-    
+	
 
 }
 
@@ -58,25 +32,6 @@ void ofApp::setup() {
 void ofApp::update() {
     float secs = ofGetLastFrameTime();
 
-	camera.Update(player.getPosition());
-	player.update(secs);
-    flower.update(player.getPosition(),secs);
-
-	//interpolação de cor do objeto
-	for (int i = 0; i < objects.size(); i++) {
-		if (objects[i] && objects[i]->collided(&player)) {
-			player.interpolateColor(objects[i]->color, 50);
-			objects[i] = nullptr;
-		}
-	}
-
-	//movimentando o player com o mouse clicado
-	if (mouseDown) {
-		player.setDirection(mousePos - mousePressedPos);
-	}
-	else {
-		player.setDirection(ofVec2f());
-	}
 
 
 }
@@ -84,30 +39,14 @@ void ofApp::update() {
 //--------------------------------------------------------------
 void ofApp::draw() {
 	ofSetColor(215, 155, 155);
-	background.draw(-camera.getPosition());
-    flower.draw(camera.getPosition());
+	
 
-
-	for (int i = 0; i < objects.size(); i++) {
-		if (objects[i]) { //se o circulo estiver ativo
-			objects[i]->draw(camera.getPosition()); //desenha
-		}
-	}
-	player.draw(camera.getPosition());
-	//}
+	
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key) {
-	if (key == GLFW_KEY_SPACE) {
 
-	}
-	else if (key == 'r')
-		player.interpolateColor(0, 50);
-	else if (key == 'g')
-		player.interpolateColor(1, 50);
-	else if (key == 'b')
-		player.interpolateColor(2, 50);
 }
 
 //--------------------------------------------------------------

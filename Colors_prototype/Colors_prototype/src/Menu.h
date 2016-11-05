@@ -1,26 +1,24 @@
 #pragma once
 
-#include "ofApp.h"
+#include "ofMain.h"
+#include "Screen.h"
+#include "Buttons.h"
+#include <vector>
 
-class Menu {
+class Menu : public Screen {
 
-private:
+	private:
+		vector <Button*> buttons;
+		ofImage menuBackground;
+		ofVec2f posButtonEnter;
+		ofVec2f posButtonCredits;
+		ofVec2f posButtonExit;
 
-	//ofVec2f posMouse;
-	//ofVec2f posButton;
-	ofImage menuBackground;
-	ofImage menuEnter;
-	ofImage menuCredits;
-	ofImage menuExit;
-	ofImage credits;
-	//ofImage back;
-
-	
-
-public:
-	bool click = false;
-	void init();
-	void update();
-	void draw();
+	public:
+		void init();
+		void update();
+		void draw() const;
+		Screen* nextScreen();
+		~Menu() {};
 
 };

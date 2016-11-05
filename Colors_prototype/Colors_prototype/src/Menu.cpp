@@ -2,39 +2,32 @@
 
 void Menu::init() {
 
-	//ofVec2f posButtonBack(900, 700);
+	posButtonEnter.set(430, 430);
+	posButtonCredits.set(430, 470);
+	posButtonExit.set(430, 510);
 
 	menuBackground.load("images/menu.png");
-	menuEnter.load("images/menuenter.png");
-	menuCredits.load("images/menucredits.png");
-	menuExit.load("images/menuExit.png");
-	credits.load("images/credits.jpg");
-	//back.load("images/back.png");
+	Button* enter = new Button(posButtonEnter, "images/enterClicked.png", "images/enter.png");
+	Button* credits = new Button(posButtonCredits, "images/creditsClicked.png", "images/credits.png");
+	Button* exit = new Button(posButtonExit, "images/exitClicked.png", "images/exit.png");
+	buttons.push_back(enter);
+	buttons.push_back(credits);
+	buttons.push_back(exit);
 }
 
 void Menu::update() {
-
+	for (int i = 0; i < 3; i++) {
+		buttons[i]->Update();
+	}
 }
 
-void Menu::draw() {
-
-	ofVec2f posMouse;
-	ofVec2f posButtonEnter(430, 430);
-	ofVec2f posButtonCredits(430, 470);
-	ofVec2f posButtonExit(430, 510);
-
-	menuBackground.draw(0, 0, 1024, 780);
-	menuEnter.draw(posButtonEnter.x, posButtonEnter.y);
-	menuCredits.draw(posButtonCredits.x, posButtonCredits.y);
-	menuExit.draw(posButtonExit.x, posButtonExit.y);
-	//credits.draw(0, 0);	
-
-	if (click)
-	{
-		if (posButtonEnter.x && posButtonEnter.y)
-		{
-			credits.draw(0, 0);
-			//back.draw(posButtonBack.x, posButtonBack.y);
-		}
+void Menu::draw() const {
+	menuBackground.draw(0, 0, 1024, 768);
+	for (int i = 0; i < 3; i++) {
+		buttons[i]->Draw();
 	}
+}
+
+Screen* Menu::nextScreen() {
+	//return Fase1;
 }
