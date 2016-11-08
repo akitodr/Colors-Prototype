@@ -1,8 +1,11 @@
 #include "Fase1.h"
-#include "GameManager.hpp"
+#include "Fase2.h"
+#include "Portal.h"
 
 void Fase1::init() {
+    GAMEMANAGER.clear();
     player = new Player();
+    switchLevel = false;
     
 	background.load("img/cenario_cinza_2.jpg");
 	camera.Init(ofVec2f(background.getWidth(), background.getHeight()));
@@ -13,26 +16,62 @@ void Fase1::init() {
     
     GAMEMANAGER.add(player);
 	player->setPosition(ofVec2f(background.getWidth() / 2, background.getHeight() / 2));
+    backgroundColor = ofVec3f(150, 255, 150);
+    
+    GAMEMANAGER.add(new Portal(this, ofVec2f(200,200)));
 }
 
-void Fase1::update(float secs, const MouseInfo& mouse) {
-	camera.Update(player->getPosition());
-
-	//movimentando o player com o mouse clicado
-	if (mouse.clicked) {
-		player->setDirection(mouse.pos - mouse.pressedPos);
-	}
-	else {
-		player->setDirection(ofVec2f());
-	}
-    GAMEMANAGER.update(secs);
+void Fase1::interpolateColor(const ofVec3f& color){
+    ofVec3f newColor = color;
+    
+    if(newColor.x >= 150 && newColor.y >= 255 && newColor.z >= 150)
+    {
+        indoOuVoltano = 0;
+    }
+    
+    if(newColor.x <= 0 && newColor.y <= 150 && newColor.z <=0)
+    {
+        indoOuVoltano = 1;
+    }
+    
+    if (indoOuVoltano == 0)
+    {
+        if(newColor.x >= 0 && newColor.z >= 0)
+        {
+            newColor.x -= 0.5;
+            newColor.z -= 0.5;
+        }
+        else if(newColor.y >= 150)
+        {
+            newColor.y -= 0.5;
+        }
+    }
+    else if(indoOuVoltano == 1)
+    {
+        if(newColor.y <= 255)
+        {
+            newColor.y += 0.5;
+            
+        }
+        else if (newColor.x <= 150 && newColor.z <= 150)
+        {
+            newColor.x += 0.5;
+            newColor.z += 0.5;
+        }
+        
+    }
+    backgroundColor = newColor;
 }
 
-void Fase1::draw() {
-	background.draw(-camera.getPosition());
-    GAMEMANAGER.draw(camera.getPosition());
+void Fase1::onPortal(){
+    cout << "Entrei!" << endl;
+    switchLevel = true;
 }
 
 Screen* Fase1::nextScreen() {
+    cout << "Entrei 2!" << endl;
+    if (switchLevel) {
+        return new Fase2();
+    }
     return this;
 }

@@ -9,6 +9,8 @@
 #ifndef GameObject_h
 #define GameObject_h
 
+#include "ofMain.h"
+
 class GameObject {
     public:
         virtual void init() = 0;
