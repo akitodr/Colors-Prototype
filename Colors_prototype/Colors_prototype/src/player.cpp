@@ -3,12 +3,12 @@
 #include "PointShape.h"
 #include "DynamicManager.h"
 #include "OFRenderer.h"
-
+#include "Collectibles.h"
 
 using namespace particle::manager;
 using namespace particle::shape;
 
-void Player::setup() {
+void Player::init() {
     
     animation.images = new ofImage[3];
     animation.images[0].load("img/a1.png");
@@ -51,7 +51,7 @@ void Player::update(float time) {
     animation.update(time);
 }
 
-void Player::draw(ofVec2f camera) {
+void Player::draw(const ofVec2f& camera) {
     renderer->setCamera(camera);
     emitter->setPosition(position);
 	emitter->draw();
@@ -118,6 +118,22 @@ void Player::interpolateColor(int RGBMode, int value)
 
 	body->setColor(newColor.x, newColor.y, newColor.z);
 }
+
+bool Player::isAlive() const {
+    return true;
+}
+
+ofRectangle Player::bounds() {
+    return ofRectangle(position, size, size);
+}
+
+void Player::collidedWith(GameObject* other) {
+    Circle* circle = reinterpret_cast<Circle*>(other);
+    if (circle != nullptr) {
+        interpolateColor(circle->color, 50);
+    }
+}
+
 
 Player::~Player() {
 	delete emitter;

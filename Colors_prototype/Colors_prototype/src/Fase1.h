@@ -9,14 +9,14 @@
 class Fase1 : public Screen {
 
 	private:
-		Player player;
+		Player* player;
 		Camera camera;
 		ofImage background;
-		vector<Circle*> objects;
 
 	public:
 		void init();
-		void update(float secs, ofVec2f& mousePos, ofVec2f& mousePressedPos, bool mouseDown);
+		void update(float secs, const MouseInfo& mouse);
 		void draw();
+        Screen* nextScreen();
 		~Fase1() {};
 };

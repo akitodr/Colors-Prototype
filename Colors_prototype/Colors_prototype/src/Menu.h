@@ -9,6 +9,8 @@ class Menu : public Screen {
 
 	private:
 		vector <Button*> buttons;
+        Screen* next;
+    
 		ofImage menuBackground;
 		ofVec2f posButtonEnter;
 		ofVec2f posButtonCredits;
@@ -16,8 +18,8 @@ class Menu : public Screen {
 
 	public:
 		void init();
-		void update();
-		void draw() const;
+		void update(float secs, const MouseInfo& mouse);
+		void draw();
 		Screen* nextScreen();
 		~Menu() {};
 

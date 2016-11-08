@@ -3,16 +3,24 @@
 #include "player.h"
 #include <vector>
 
-class Circle {
+class Circle : public GameObject {
 private:
 	int size = 10;
-public:
+    bool alive;
+    
+public:    
     int color;
 	ofVec2f position; //mudei pra public mas não curt
 	bool active;
+    
 	void init();
 	void update(float time);
-	bool collided(Player* player);
-	void draw(ofVec2f posCamera);
+	void draw(const ofVec2f& posCamera);
+    ofRectangle bounds();
+    void collidedWith(GameObject* other);
+    
+    bool isAlive() const;
+    void kill();
+    
 	~Circle();
 };

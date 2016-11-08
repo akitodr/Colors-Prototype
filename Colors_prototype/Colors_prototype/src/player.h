@@ -6,13 +6,15 @@
 #include "ColoredBody.h"
 #include "OFRenderer.h"
 #include "Animation.h"
+#include "GameObject.h"
 
 using namespace math;
 using namespace particle;
 using namespace particle::physics;
 using namespace particle::body;
 
-class Player {
+
+class Player : public GameObject {
 private:
 	Emitter* emitter;
 	ColoredBody* body;
@@ -24,11 +26,11 @@ private:
     ofVec2f position;
     ofVec2f direction;
 
-public:
+public:    
 	int size = 20;
-	void setup();
+	void init();
 	void update(float time);
-	void draw(ofVec2f camera);
+	void draw(const ofVec2f& posCamera);
 	void setColor(int r, int g, int b);
 	void interpolateColor(int RGBMode, int value);
     
@@ -37,5 +39,9 @@ public:
     
     ofVec2f getDirection();
     void setDirection(ofVec2f direction);
+    bool isAlive() const;
+    ofRectangle bounds();
+    void collidedWith(GameObject* other);
+
 	~Player();
 };

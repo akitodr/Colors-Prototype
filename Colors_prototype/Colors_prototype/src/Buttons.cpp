@@ -8,6 +8,7 @@ Button::Button(const ofVec2f& pos, string clicked, string notClicked) { //constr
 	colorClicked.load(clicked);
 	//this->sound.load(sound);
 	IsClicked = false;
+    ClickFinished = false;
 }
 
 const bool Button::Check(const ofVec2f& posMouse) const {//checa colisão do mouse com o botão
@@ -21,23 +22,13 @@ bool Button::SetClick() {
 	return IsClicked;
 }
 
-void Button::Update() {
-	if (IsClicked) {
-		//se tiver tocando não vai tocar de novo
-		return;
-	}
-	//se não tiver tocando aí toca
-	//sound.play();
-	IsClicked = true;
-	clickTime = 0;
-}
-
 void Button::Update(float secs) {
 	if (IsClicked) {
 		clickTime += secs;
 		//a cada 4 segundos o botão "desliga"
 		if (clickTime > 0.6) {
 			IsClicked = false;
+            ClickFinished = true;
 			//sound.stop();
 		}
 	}
@@ -50,6 +41,10 @@ void Button::Draw() const {
 	else {
 		colorNotClicked.draw(position.x, position.y);
 	}
+}
+
+bool Button::isClickFinished() const {
+    return ClickFinished;
 }
 
 Button::~Button() {

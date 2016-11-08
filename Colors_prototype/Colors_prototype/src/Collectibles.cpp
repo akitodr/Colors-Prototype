@@ -5,18 +5,17 @@ void Circle::init() {
 	position.x = rand() % 1000;
 	position.y = rand() % 760;
 	color = rand() % 3;
+    alive = true;
 }
 void Circle::update(float time) {
 
 }
 
-bool Circle::collided(Player* player) {
-	ofVec2f playerPosition = player->getPosition();
-	return ((playerPosition.x + player->size) >= position.x && playerPosition.x <= (position.x + size)
-		&& playerPosition.y <= (position.y + size) && (playerPosition.y + player->size) >= position.y);
+void Circle::collidedWith(GameObject* other) {
+    alive = false;
 }
 
-void Circle::draw(ofVec2f posCamera) {
+void Circle::draw(const ofVec2f& posCamera) {
 	switch (color) {
 	case 0:
 		ofSetColor(ofColor::red);
@@ -30,6 +29,21 @@ void Circle::draw(ofVec2f posCamera) {
 	}
 	ofDrawCircle(position.x - posCamera.x, position.y - posCamera.y, 10);
 }
+
+bool Circle::isAlive() const {
+    return alive;
+}
+
+void Circle::kill() {
+    alive = false;
+}
+
+ofRectangle Circle::bounds() {
+    return ofRectangle(position, size, size);
+}
+
+
+
 Circle::~Circle() {
 
 }

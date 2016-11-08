@@ -4,49 +4,25 @@
 #include "DynamicManager.h"
 #include "NewtonPhysics.h"
 #include "OFRenderer.h"
-#include "Screen.h"
-
-using namespace math;
-using namespace particle;
-using namespace particle::physics;
-using namespace particle::body;
-using namespace particle::manager;
-using namespace particle::shape;
-
-
-
-ofVec2f mousePressedPos;
-ofVec2f mousePos;
-bool mouseDown = false;
-
-//fazendo mta gambiarra pra implementar o menu
+#include "Menu.h"
 
 //--------------------------------------------------------------
 void ofApp::setup() {
-
-	
-
+    manager.init(new Menu());
 }
 
 //--------------------------------------------------------------
 void ofApp::update() {
-    float secs = ofGetLastFrameTime();
-
-
-
+    manager.update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw() {
-	ofSetColor(215, 155, 155);
-	
-
-	
+    manager.draw();
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key) {
-
 }
 
 //--------------------------------------------------------------
@@ -56,24 +32,23 @@ void ofApp::keyReleased(int key) {
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y) {
+    manager.mouseMoved(x, y);
 
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button) {
-	mousePos.set(x, y);
+    manager.mouseDragged(x, y, button);
 }
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button) {
-	mousePressedPos.set(x, y);
-	mousePos.set(x, y);
-	mouseDown = true;
+    manager.mousePressed(x, y, button);
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button) {
-	mouseDown = false;
+    manager.mouseReleased(x, y, button);
 }
 
 //--------------------------------------------------------------
