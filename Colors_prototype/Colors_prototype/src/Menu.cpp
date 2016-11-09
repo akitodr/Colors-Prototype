@@ -9,6 +9,8 @@ void Menu::init() {
 	posButtonExit.set(430, 510);
 
 	menuBackground.load("images/menu.png");
+	sound.load("audio/white_light.wav");
+	sound.play();
 	Button* enter = new Button(posButtonEnter, "images/enterClicked.png", "images/enter.png");
 	Button* credits = new Button(posButtonCredits, "images/creditsClicked.png", "images/credits.png");
 	Button* exit = new Button(posButtonExit, "images/exitClicked.png", "images/exit.png");
@@ -41,5 +43,6 @@ void Menu::draw() {
 }
 
 Screen* Menu::nextScreen() {
+	sound.stop();
     return next;
 }

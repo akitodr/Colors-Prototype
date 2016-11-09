@@ -9,6 +9,8 @@ void Fase1::init() {
     
 	background.load("img/cenario_cinza_2.jpg");
 	camera.Init(ofVec2f(background.getWidth(), background.getHeight()));
+	sound.load("audio/valse_of_the_forest.wav");
+
 
 	for (int i = 0; i < 20; i++) {
         GAMEMANAGER.add(new Circle());
@@ -71,6 +73,7 @@ void Fase1::onPortal(){
 Screen* Fase1::nextScreen() {
     cout << "Entrei 2!" << endl;
     if (switchLevel) {
+		sound.stop();
         return new Fase2();
     }
     return this;

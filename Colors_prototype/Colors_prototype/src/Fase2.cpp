@@ -16,6 +16,8 @@ void Fase2::init() {
     background.load("img/cenario_cinza_2.jpg");
     camera.Init(ofVec2f(background.getWidth(), background.getHeight()));
     backgroundColor = ofVec3f(150, 150, 255);
+	sound.load("audio/blue_dance.wav");
+	sound.play();
     
     for (int i = 0; i < 20; i++) {
         GAMEMANAGER.add(new Circle());
@@ -77,6 +79,7 @@ void Fase2::onPortal(){
 
 Screen* Fase2::nextScreen() {
     if (switchLevel) {
+		sound.stop();
         return new Fase1();
     }
     return this;

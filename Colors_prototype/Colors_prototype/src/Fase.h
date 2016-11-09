@@ -20,6 +20,7 @@ class Fase : public Screen{
         Player* player;
         ofImage background;
         Camera camera;
+		ofSoundPlayer sound;
         int indoOuVoltano = 0;
         ofVec3f backgroundColor;
 

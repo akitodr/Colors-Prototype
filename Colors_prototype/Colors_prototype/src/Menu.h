@@ -12,6 +12,7 @@ class Menu : public Screen {
         Screen* next;
     
 		ofImage menuBackground;
+		ofSoundPlayer sound;
 		ofVec2f posButtonEnter;
 		ofVec2f posButtonCredits;
 		ofVec2f posButtonExit;
