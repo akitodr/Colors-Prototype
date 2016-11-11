@@ -30,6 +30,7 @@ void Menu::update(float secs, const MouseInfo& mouse) {
         if (buttons[i]->isClickFinished()) {
             if (i == 0) {
                 next = new Fase1();
+                sound.stop();
             }
         }
 	}
@@ -43,6 +44,5 @@ void Menu::draw() {
 }
 
 Screen* Menu::nextScreen() {
-	sound.stop();
     return next;
 }

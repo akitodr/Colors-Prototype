@@ -18,9 +18,10 @@ class Portal : public GameObject{
         ofImage image;
         Fase* fase;
         ofVec2f position;
+        ofVec3f color;
     
     public:
-        Portal(Fase* level, const ofVec2f& pos);
+        Portal(Fase* level, const ofVec2f& pos, const ofVec3f& _color);
         void init();
         bool isAlive() const;
         void draw(const ofVec2f& camera);

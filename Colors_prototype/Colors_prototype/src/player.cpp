@@ -31,8 +31,9 @@ void Player::init() {
 		Range<float>(0, 1000)); //Rotation speed
 	physics->setGravity(ofVec2f(0, 100));
 
+    //COOOOORRRRRRR AQUIIIIIII FOCOOOOOO
 	body = new ColoredBody(0, 255, 0, //Color
-		Range<int>(255)); //Alpha variation
+		Range<int>(255, 100)); //Alpha variation
 
 	renderer = new OFRenderer("img/ember.png", 1.5, true);
 
@@ -55,7 +56,7 @@ void Player::draw(const ofVec2f& camera) {
     renderer->setCamera(camera);
     emitter->setPosition(position);
 	emitter->draw();
-    animation.draw(position - camera);
+   // animation.draw(position - camera);
 }
 
 ofVec2f Player::getPosition() {
@@ -117,6 +118,7 @@ void Player::interpolateColor(int RGBMode, int value)
 	}
 
 	body->setColor(newColor.x, newColor.y, newColor.z);
+    cout << newColor << endl;
 }
 
 bool Player::isAlive() const {
@@ -132,6 +134,10 @@ void Player::collidedWith(GameObject* other) {
     if (circle != nullptr) {
         interpolateColor(circle->color, 50);
     }
+}
+
+ofVec3f Player::getColor() const {
+    return body->getColor();
 }
 
 

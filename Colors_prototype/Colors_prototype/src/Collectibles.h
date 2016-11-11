@@ -7,6 +7,7 @@ class Circle : public GameObject {
 private:
 	int size = 10;
     bool alive;
+    float count;
     
 public:    
     int color;

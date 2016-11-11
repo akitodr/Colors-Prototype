@@ -47,7 +47,8 @@ void OFRenderer::draw(const particle::Particle& particle) const
 	sprite.draw(0, 0);
 	ofPopMatrix();
 
-	ofDisableAlphaBlending();
+	ofEnableAlphaBlending();
+    ofSetColor(255, 255, 255);
 }
 
 OFRenderer::~OFRenderer()

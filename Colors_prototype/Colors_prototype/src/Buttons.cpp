@@ -18,7 +18,7 @@ const bool Button::Check(const ofVec2f& posMouse) const {//checa colisão do mous
 }
 
 bool Button::SetClick() {
-	IsClicked = !IsClicked;
+    IsClicked = true;
 	return IsClicked;
 }
 

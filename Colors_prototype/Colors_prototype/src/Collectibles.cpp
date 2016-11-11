@@ -8,14 +8,22 @@ void Circle::init() {
     alive = true;
 }
 void Circle::update(float time) {
-
+    if (!alive){
+        count += time;
+        if (count > 10)
+            alive = true;
+    }
+    
 }
 
 void Circle::collidedWith(GameObject* other) {
+    if(!alive) return;
     alive = false;
+    count = 0;
 }
 
 void Circle::draw(const ofVec2f& posCamera) {
+    if(!alive) return;
 	switch (color) {
 	case 0:
 		ofSetColor(ofColor::red);
@@ -31,7 +39,7 @@ void Circle::draw(const ofVec2f& posCamera) {
 }
 
 bool Circle::isAlive() const {
-    return alive;
+    return true;
 }
 
 void Circle::kill() {

@@ -8,8 +8,8 @@
 
 #include "Portal.h"
 
-Portal::Portal(Fase* level, const ofVec2f& pos)
-: fase(level), position(pos) {}
+Portal::Portal(Fase* level, const ofVec2f& pos, const ofVec3f& _color)
+: fase(level), position(pos), color(_color) {}
 
 void Portal::init(){
     image.load("img/portal.png");
@@ -34,6 +34,8 @@ ofRectangle Portal::bounds(){
 void Portal::collidedWith(GameObject* other){
     Player* player = dynamic_cast<Player*>(other);
     if (player != nullptr) {
-        fase->onPortal();
+        float distance = (player->getColor() - color).length();
+        if(distance <= 100)
+            fase->onPortal();
     }
 }

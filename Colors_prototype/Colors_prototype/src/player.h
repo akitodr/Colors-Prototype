@@ -42,6 +42,7 @@ public:
     bool isAlive() const;
     ofRectangle bounds();
     void collidedWith(GameObject* other);
+    ofVec3f getColor() const;
 
 	~Player();
 };
