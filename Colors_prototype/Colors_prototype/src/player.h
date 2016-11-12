@@ -19,30 +19,30 @@ private:
 	Emitter* emitter;
 	ColoredBody* body;
 	NewtonPhysics* physics;
-    OFRenderer* renderer;
-    
-    Animation animation;
-    
-    ofVec2f position;
-    ofVec2f direction;
+	OFRenderer* renderer;
 
-public:    
+	Animation animation;
+
+	ofVec2f position;
+	ofVec2f direction;
+
+public:
 	int size = 20;
 	void init();
 	void update(float time);
 	void draw(const ofVec2f& posCamera);
 	void setColor(int r, int g, int b);
 	void interpolateColor(int RGBMode, int value);
-    
+
 	ofVec2f getPosition();
 	void setPosition(ofVec2f position);
-    
-    ofVec2f getDirection();
-    void setDirection(ofVec2f direction);
-    bool isAlive() const;
-    ofRectangle bounds();
-    void collidedWith(GameObject* other);
-    ofVec3f getColor() const;
+
+	ofVec2f getDirection();
+	void setDirection(ofVec2f direction);
+	bool isAlive() const;
+	ofRectangle bounds();
+	void collidedWith(GameObject* other);
+	ofVec3f getColor() const;
 
 	~Player();
 };

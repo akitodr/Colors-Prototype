@@ -5,25 +5,25 @@ void Circle::init() {
 	position.x = rand() % 1000;
 	position.y = rand() % 760;
 	color = rand() % 3;
-    alive = true;
+	alive = true;
 }
 void Circle::update(float time) {
-    if (!alive){
-        count += time;
-        if (count > 10)
-            alive = true;
-    }
-    
+	if (!alive) {
+		count += time;
+		if (count > 10)
+			alive = true;
+	}
+
 }
 
 void Circle::collidedWith(GameObject* other) {
-    if(!alive) return;
-    alive = false;
-    count = 0;
+	if (!alive) return;
+	alive = false;
+	count = 0;
 }
 
 void Circle::draw(const ofVec2f& posCamera) {
-    if(!alive) return;
+	if (!alive) return;
 	switch (color) {
 	case 0:
 		ofSetColor(ofColor::red);
@@ -39,15 +39,15 @@ void Circle::draw(const ofVec2f& posCamera) {
 }
 
 bool Circle::isAlive() const {
-    return true;
+	return true;
 }
 
 void Circle::kill() {
-    alive = false;
+	alive = false;
 }
 
 ofRectangle Circle::bounds() {
-    return ofRectangle(position, size, size);
+	return ofRectangle(position, size, size);
 }
 
 

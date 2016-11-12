@@ -79,7 +79,6 @@ void Fase2::onPortal(){
 
 Screen* Fase2::nextScreen() {
     if (switchLevel) {
-		sound.stop();
         return new Fase1();
     }
     return this;

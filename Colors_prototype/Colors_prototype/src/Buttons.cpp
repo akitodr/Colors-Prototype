@@ -1,14 +1,12 @@
 #include "Buttons.h"
 
-Button::Button(const ofVec2f& pos, string clicked, string notClicked) { //construtor
-	//da load nas parada
-	//cria um botão com todos esses parâmetros
+Button::Button(const ofVec2f& pos, string clicked, string notClicked) { 
 	position = pos;
 	colorNotClicked.load(notClicked);
 	colorClicked.load(clicked);
 	//this->sound.load(sound);
 	IsClicked = false;
-    ClickFinished = false;
+	ClickFinished = false;
 }
 
 const bool Button::Check(const ofVec2f& posMouse) const {//checa colisão do mouse com o botão
@@ -18,7 +16,7 @@ const bool Button::Check(const ofVec2f& posMouse) const {//checa colisão do mous
 }
 
 bool Button::SetClick() {
-    IsClicked = true;
+	IsClicked = true;
 	return IsClicked;
 }
 
@@ -28,7 +26,7 @@ void Button::Update(float secs) {
 		//a cada 4 segundos o botão "desliga"
 		if (clickTime > 0.6) {
 			IsClicked = false;
-            ClickFinished = true;
+			ClickFinished = true;
 			//sound.stop();
 		}
 	}
@@ -44,7 +42,7 @@ void Button::Draw() const {
 }
 
 bool Button::isClickFinished() const {
-    return ClickFinished;
+	return ClickFinished;
 }
 
 Button::~Button() {

@@ -31,7 +31,7 @@ OFRenderer::OFRenderer(const char* name, float _scale, bool _aditive)
 }
 
 void OFRenderer::setCamera(const ofVec2f& cameraPos) {
-    camera = cameraPos;
+	camera = cameraPos;
 }
 
 void OFRenderer::draw(const particle::Particle& particle) const
@@ -48,7 +48,7 @@ void OFRenderer::draw(const particle::Particle& particle) const
 	ofPopMatrix();
 
 	ofEnableAlphaBlending();
-    ofSetColor(255, 255, 255);
+	ofSetColor(255, 255, 255);
 }
 
 OFRenderer::~OFRenderer()

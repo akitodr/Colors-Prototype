@@ -9,30 +9,30 @@
 #include "Sprite.h"
 
 Sprite::Sprite(const ofVec2f& pos, std::string img)
-: position(pos) {
-    image.load(img);
+	: position(pos) {
+	image.load(img);
 }
 
-void Sprite::init(){
-    
+void Sprite::init() {
+
 }
 
-bool Sprite::isAlive() const{
-    return true;
+bool Sprite::isAlive() const {
+	return true;
 }
 
-void Sprite::draw(const ofVec2f& camera){
-    image.draw(position - camera);
+void Sprite::draw(const ofVec2f& camera) {
+	image.draw(position - camera);
 }
 
-void Sprite::update(float secs){
-    
+void Sprite::update(float secs) {
+
 }
 
-ofRectangle Sprite::bounds(){
-    return ofRectangle(position, image.getWidth(), image.getHeight());
+ofRectangle Sprite::bounds() {
+	return ofRectangle(position, image.getWidth(), image.getHeight());
 }
 
-void Sprite::collidedWith(GameObject* other){
-    
+void Sprite::collidedWith(GameObject* other) {
+
 }

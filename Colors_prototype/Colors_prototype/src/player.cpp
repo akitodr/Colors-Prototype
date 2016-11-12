@@ -9,20 +9,20 @@ using namespace particle::manager;
 using namespace particle::shape;
 
 void Player::init() {
-    
-    animation.images = new ofImage[3];
-    animation.images[0].load("img/a1.png");
-    animation.images[0].setAnchorPercent(0.5, 0.5);
-    animation.images[1].load("img/a2.png");
-    animation.images[1].setAnchorPercent(0.5, 0.5);
-    animation.images[2].load("img/a3.png");
-    animation.images[2].setAnchorPercent(0.5, 0.5);
-    animation.frame = 0;
-    animation.count = 3;
-    animation.repeat = true;
-    animation.frameTime = 0.5;
-    animation.time = 0;
-    
+
+	animation.images = new ofImage[3];
+	animation.images[0].load("img/a1.png");
+	animation.images[0].setAnchorPercent(0.5, 0.5);
+	animation.images[1].load("img/a2.png");
+	animation.images[1].setAnchorPercent(0.5, 0.5);
+	animation.images[2].load("img/a3.png");
+	animation.images[2].setAnchorPercent(0.5, 0.5);
+	animation.frame = 0;
+	animation.count = 3;
+	animation.repeat = true;
+	animation.frameTime = 0.5;
+	animation.time = 0;
+
 	physics = new NewtonPhysics(
 		Range<float>(1), //Mass
 		Range<int>(-10, 10),  //Force
@@ -31,7 +31,7 @@ void Player::init() {
 		Range<float>(0, 1000)); //Rotation speed
 	physics->setGravity(ofVec2f(0, 100));
 
-    //COOOOORRRRRRR AQUIIIIIII FOCOOOOOO
+	//COOOOORRRRRRR AQUIIIIIII FOCOOOOOO
 	body = new ColoredBody(0, 255, 0, //Color
 		Range<int>(255, 100)); //Alpha variation
 
@@ -47,16 +47,16 @@ void Player::init() {
 }
 
 void Player::update(float time) {
-    position += direction * 30 * time;
+	position += direction * 30 * time;
 	emitter->process(time);
-    animation.update(time);
+	animation.update(time);
 }
 
 void Player::draw(const ofVec2f& camera) {
-    renderer->setCamera(camera);
-    emitter->setPosition(position);
+	renderer->setCamera(camera);
+	emitter->setPosition(position);
 	emitter->draw();
-   // animation.draw(position - camera);
+	animation.draw(position - camera);
 }
 
 ofVec2f Player::getPosition() {
@@ -64,19 +64,19 @@ ofVec2f Player::getPosition() {
 }
 
 void Player::setPosition(ofVec2f position) {
-    this->position = position;
+	this->position = position;
 }
 
 void Player::setDirection(ofVec2f direction) {
-    if (direction.length() > 15) {
-        direction.normalize() *= 15;
-    }
+	if (direction.length() > 15) {
+		direction.normalize() *= 15;
+	}
 
-    this->direction = direction;
+	this->direction = direction;
 }
 
 ofVec2f Player::getDirection() {
-    return direction;
+	return direction;
 }
 
 void Player::setColor(int r, int g, int b) {
@@ -118,26 +118,26 @@ void Player::interpolateColor(int RGBMode, int value)
 	}
 
 	body->setColor(newColor.x, newColor.y, newColor.z);
-    cout << newColor << endl;
+	cout << newColor << endl;
 }
 
 bool Player::isAlive() const {
-    return true;
+	return true;
 }
 
 ofRectangle Player::bounds() {
-    return ofRectangle(position, size, size);
+	return ofRectangle(position, size, size);
 }
 
 void Player::collidedWith(GameObject* other) {
-    Circle* circle = reinterpret_cast<Circle*>(other);
-    if (circle != nullptr) {
-        interpolateColor(circle->color, 50);
-    }
+	Circle* circle = reinterpret_cast<Circle*>(other);
+	if (circle != nullptr) {
+		interpolateColor(circle->color, 50);
+	}
 }
 
 ofVec3f Player::getColor() const {
-    return body->getColor();
+	return body->getColor();
 }
 
 
