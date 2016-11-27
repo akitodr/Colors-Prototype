@@ -13,7 +13,7 @@
 #include "Camera.h"
 #include "Collectibles.h"
 #include "player.h"
-#include "GameManager.hpp"
+#include "GameManager.h"
 
 class Fase : public Screen{
     protected:
@@ -26,6 +26,8 @@ class Fase : public Screen{
 
     
     public:
+
+		ofVec2f convertPoint(ofVec2f from, ofVec2f to, ofVec2f position);
         void update(float secs, const MouseInfo& mouse);
         void draw();
     

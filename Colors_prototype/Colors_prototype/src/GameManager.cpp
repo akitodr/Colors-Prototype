@@ -6,7 +6,7 @@
 //
 //
 
-#include "GameManager.hpp"
+#include "GameManager.h"
 
 GameManager::GameManager() {
 }

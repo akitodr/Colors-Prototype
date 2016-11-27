@@ -5,6 +5,7 @@ void Circle::init() {
 	position.x = rand() % 1000;
 	position.y = rand() % 760;
 	color = rand() % 3;
+	tag = "collectible";
 	alive = true;
 }
 void Circle::update(float time) {
@@ -20,6 +21,10 @@ void Circle::collidedWith(GameObject* other) {
 	if (!alive) return;
 	alive = false;
 	count = 0;
+}
+
+bool Circle::playerIsNearBy(GameObject* other) {
+
 }
 
 void Circle::draw(const ofVec2f& posCamera) {
