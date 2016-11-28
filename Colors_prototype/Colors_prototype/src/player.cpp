@@ -131,8 +131,8 @@ ofRectangle Player::bounds() {
 
 void Player::collidedWith(GameObject* other) {
 	Circle* circle = reinterpret_cast<Circle*>(other);
-	if (circle != nullptr) {
-		interpolateColor(circle->color, 50);
+	if (circle != nullptr && circle->tag == "collectible" ) {
+		interpolateColor(circle->color, 5);
 	}
 }
 

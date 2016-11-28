@@ -1,3 +1,11 @@
+//
+//  GameManager.cpp
+//  colors
+//
+//  Created by ViniGodoy on 05/11/16.
+//
+//
+
 #include "GameManager.h"
 
 GameManager::GameManager() {
@@ -18,8 +26,8 @@ void GameManager::add(GameObject* object)
 
 void GameManager::update(float secs)
 {
-    vector<GameObject*> alive;
-    vector<GameObject*> toDelete;
+    std::vector<GameObject*> alive;
+    std::vector<GameObject*> toDelete;
     
     std::swap(toDelete, dead);
     

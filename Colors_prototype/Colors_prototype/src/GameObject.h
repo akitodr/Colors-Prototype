@@ -11,6 +11,7 @@ class GameObject {
         virtual void update(float secs) = 0;
         virtual ofRectangle bounds() = 0;
         virtual void collidedWith(GameObject* other) = 0;
+		string tag;
     
         virtual ~GameObject() {}
 };
