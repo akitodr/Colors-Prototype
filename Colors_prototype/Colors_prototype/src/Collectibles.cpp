@@ -2,11 +2,16 @@
 
 void Circle::init() {
 	active = true;
-	position.x = rand() % 1000;
+	position.x = rand() % 10000;
 	position.y = rand() % 760;
 	color = rand() % 3;
 	tag = "collectible";
 	alive = true;
+
+	for (int i = 0; i < 6; i++)
+	{
+		red[i].load("img/")
+	}
 }
 void Circle::update(float time) {
 	if (!alive) {
@@ -25,18 +30,11 @@ void Circle::collidedWith(GameObject* other) {
 
 void Circle::draw(const ofVec2f& posCamera) {
 	if (!alive) return;
-	switch (color) {
-	case 0:
-		ofSetColor(ofColor::red);
-		break;
-	case 1:
-		ofSetColor(ofColor::green);
-		break;
-	default:
-		ofSetColor(ofColor::blue);
-		break;
+	for (int i = 0; i < 6; i++) {
+		red[i].draw(position);
+		blue[i].draw(position);
+		green[i].draw(position);
 	}
-	ofDrawCircle(position.x - posCamera.x, position.y - posCamera.y, 10);
 }
 
 bool Circle::isAlive() const {

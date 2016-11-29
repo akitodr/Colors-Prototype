@@ -36,6 +36,7 @@ void Fase::draw(){
     interpolateColor(backgroundColor);
     ofSetColor(backgroundColor.x, backgroundColor.y, backgroundColor.z);
     background.draw(-camera.getPosition());
+	background2.draw(background.getWidth() - camera.getPosition());
     GAMEMANAGER.draw(camera.getPosition());
 }
 

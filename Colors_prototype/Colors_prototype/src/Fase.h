@@ -19,6 +19,7 @@ class Fase : public Screen{
     protected:
         Player* player;
         ofImage background;
+		ofImage background2;
         Camera camera;
 		ofSoundPlayer sound;
         int indoOuVoltano = 0;

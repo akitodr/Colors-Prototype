@@ -9,6 +9,10 @@ private:
 	bool alive;
 	float count;
 
+	ofImage red[6];
+	ofImage green[6];
+	ofImage blue[6];
+
 public:
 	int color;
 	ofVec2f position; //mudei pra public mas não curt
@@ -17,7 +21,6 @@ public:
 	void init();
 	void update(float time);
 	void draw(const ofVec2f& posCamera);
-	//bool playerIsNearBy(GameObject* other);
 	ofRectangle bounds();
 	void collidedWith(GameObject* other);
 

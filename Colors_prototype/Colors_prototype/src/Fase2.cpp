@@ -14,24 +14,16 @@
 
 void Fase2::init() {
     GAMEMANAGER.clear();
-    player = new Player();
     switchLevel = false;
     
-    background.load("img/backgroundmar.jpg");
+    background.load("img/background_mar01.jpg");
+	background2.load("img/background_mar02.jpg");
     camera.Init(ofVec2f(background.getWidth(), background.getHeight()));
     sound.load("audio/valse_of_the_forest.wav");
     sound.play();
     sound.setLoop(true);
     backgroundColor = ofVec3f(150, 200, 150);
-    
-    for (int i = 0; i < 20; i++) {
-        GAMEMANAGER.add(new Circle());
-    }
-    
-    GAMEMANAGER.add(player);
-    player->setPosition(ofVec2f(background.getWidth() / 7, background.getHeight() / 2));
-    
-    
+       
     GAMEMANAGER.add(new Portal(this, ofVec2f(background.getWidth() - 80, 300), ofVec3f(0, 0, 255)));
     GAMEMANAGER.add(new Sprite(ofVec2f(9600, 445), "img/alga3.png"));
     GAMEMANAGER.add(new Sprite(ofVec2f(background.getWidth() - 350, 470), "img/rocha4.png"));
@@ -138,12 +130,16 @@ void Fase2::init() {
     GAMEMANAGER.add(new Sprite(ofVec2f(9290, 570), "img/bolha3.png"));
     GAMEMANAGER.add(new Sprite(ofVec2f(9315, 550), "img/bolha3.png"));
     GAMEMANAGER.add(new Sprite(ofVec2f(9340, 530), "img/bolha3.png"));
-    GAMEMANAGER.add(new Sprite(ofVec2f(9365, 510), "img/bolha3.png"));
-    
-    
-    
-    
-    
+    GAMEMANAGER.add(new Sprite(ofVec2f(9365, 510), "img/bolha3.png"));    
+
+	for (int i = 0; i < 20; i++) {
+		GAMEMANAGER.add(new Circle());
+	}
+
+
+	player = new Player();
+	GAMEMANAGER.add(player);
+	player->setPosition(ofVec2f(200, background.getHeight() / 2));
 }
 
 
@@ -151,44 +147,33 @@ void Fase2::interpolateColor(const ofVec3f& color){
     
     ofVec3f newColor = color;
     
-    if(newColor.x >= 150 && newColor.y >= 150 && newColor.z >= 255)
-    {
+    if(newColor.x >= 150 && newColor.y >= 150 && newColor.z >= 255) {
         indoOuVoltano = 0;
     }
     
-    if(newColor.x <= 0 && newColor.y <= 0 && newColor.z <=150)
-    {
+    if(newColor.x <= 0 && newColor.y <= 0 && newColor.z <=150) {
         indoOuVoltano = 1;
     }
     
-    if (indoOuVoltano == 0)
-    {
-        if(newColor.x >= 0 && newColor.y >= 0)
-        {
+    if (indoOuVoltano == 0) {
+        if(newColor.x >= 0 && newColor.y >= 0) {
             newColor.x -= 0.5;
             newColor.y -= 0.5;
         }
-        else if(newColor.z >= 150)
-        {
+        else if(newColor.z >= 150) {
             newColor.z -= 0.5;
         }
     }
-    else if(indoOuVoltano == 1)
-    {
-        if(newColor.z <= 255)
-        {
+    else if(indoOuVoltano == 1) {
+        if(newColor.z <= 255) {
             newColor.z += 0.5;
             
         }
-        else if (newColor.x <= 150 && newColor.y <= 150)
-        {
+        else if (newColor.x <= 150 && newColor.y <= 150) {
             newColor.x += 0.5;
             newColor.y += 0.5;
         }
-        
     }
-    
-    
     backgroundColor = newColor;
 }
 
