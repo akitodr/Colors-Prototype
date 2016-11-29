@@ -1,13 +1,4 @@
-//
-//  Sprite.h
-//  colors
-//
-//  Created by BEPID on 11/11/16.
-//
-//
-
-#ifndef Sprite_h
-#define Sprite_h
+#pragma once
 
 #include "GameObject.h"
 #include <string>
@@ -26,6 +17,3 @@ public:
 	void collidedWith(GameObject* other);
 
 };
-
-
-#endif /* Sprite_h */

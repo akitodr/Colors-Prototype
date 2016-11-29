@@ -1,11 +1,11 @@
 #pragma once
 
 #include "ofMain.h"
-#include "Screen.h"
+#include "Fase1.h"
 #include "Buttons.h"
 #include <vector>
 
-class Menu : public Screen {
+class Menu : public Fase {
 
 	private:
 		vector <Button*> buttons;
@@ -22,6 +22,8 @@ class Menu : public Screen {
 		void update(float secs, const MouseInfo& mouse);
 		void draw();
 		Screen* nextScreen();
+		void onPortal() {};
+		void interpolateColor(const ofVec3f& color);
 		~Menu() {};
 
 };

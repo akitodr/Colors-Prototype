@@ -17,18 +17,17 @@ private:
 	ofSoundPlayer sound;
 	float clickTime = 0;
 	bool IsClicked;
-    bool ClickFinished;
+	bool ClickFinished;
 
-public: 
+public:
 
 	Button(const ofVec2f& pos, string clicked, string notClicked);
 	const bool Check(const ofVec2f& posMouse) const;
 	bool SetClick();
-    bool isClickFinished() const;
+	bool isClickFinished() const;
 	void Update(float secs);
 	void Draw() const;
 	~Button();
 
 
 };
-

@@ -6,7 +6,7 @@
 //
 //
 
-#include "GameManager.h"
+#include "GameManager.hpp"
 
 GameManager::GameManager() {
 }
@@ -26,8 +26,8 @@ void GameManager::add(GameObject* object)
 
 void GameManager::update(float secs)
 {
-    std::vector<GameObject*> alive;
-    std::vector<GameObject*> toDelete;
+    vector<GameObject*> alive;
+    vector<GameObject*> toDelete;
     
     std::swap(toDelete, dead);
     

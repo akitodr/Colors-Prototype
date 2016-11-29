@@ -17,7 +17,7 @@ public:
 	void init();
 	void update(float time);
 	void draw(const ofVec2f& posCamera);
-	bool playerIsNearBy(GameObject* other);
+	//bool playerIsNearBy(GameObject* other);
 	ofRectangle bounds();
 	void collidedWith(GameObject* other);
 

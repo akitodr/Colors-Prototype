@@ -34,10 +34,10 @@ void Button::Update(float secs) {
 
 void Button::Draw() const {
 	if (!IsClicked) {
-		colorClicked.draw(position.x, position.y);
+		colorClicked.draw(position);
 	}
 	else {
-		colorNotClicked.draw(position.x, position.y);
+		colorNotClicked.draw(position);
 	}
 }
 

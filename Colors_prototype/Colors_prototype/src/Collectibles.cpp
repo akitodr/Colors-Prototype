@@ -23,10 +23,6 @@ void Circle::collidedWith(GameObject* other) {
 	count = 0;
 }
 
-bool Circle::playerIsNearBy(GameObject* other) {
-
-}
-
 void Circle::draw(const ofVec2f& posCamera) {
 	if (!alive) return;
 	switch (color) {
